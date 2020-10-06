@@ -3,9 +3,9 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
   def create
+    #下記のchecked: falseはメモ作成時に未読の情報を作成するということを表している。
     post = Post.create(content: params[:content], checked: false)
     render json:{ post: post }
-
   end
   def checked
     post = Post.find(params[:id])
